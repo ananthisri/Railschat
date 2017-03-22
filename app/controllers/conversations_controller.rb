@@ -1,32 +1,44 @@
 class ConversationsController < ApplicationController
-	def create
+	
+
+
+	def create	
 		@conversation = Conversation.get(current_user.id, params[:user_id])
-
-		add_to_conversations unless conversated?
+		@messages = @conversation.messages
+		if @messages.length > 0
+			@over_one =true
+		else
+			@over_one=false
+		end
 
 		respond_to do |format|
-			format.js
+			format.js	
 		end
+
 	end
 
-	def close
+
+	def close	
 		@conversation = Conversation.find(params[:id])
-
 		session[:conversations].delete(@conversation.id)
-
 		respond_to do |format|
 			format.js
-		end
+		end		
 	end
 
-	private
-
-	def add_to_conversations
-		session[:conversations] ||= []
-		session[:conversations] << @conversation.id
+	def destroy
+		session[:person] = nil
+		redirect_to '/users/sign_in'
 	end
 
-	def conversated?
-		session[:conversations].include?(@conversation.id)
-	end
+	
+
+	#def add_to_conversations
+	#session[:conversations] ||= []
+	#session[:ConversationsController] << @conversation.id
+	#end
+
+	#def conversated?
+	#session[:conversations].include?(@conversation.id)
+	#end
 end

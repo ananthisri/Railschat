@@ -4,7 +4,6 @@ class MessageBroadcastJob < ApplicationJob
   def perform(message)
   	sender = message.user
   	recipient = message.conversation.opposed_user(sender)
-
   	broadcast_to_sender(sender, message)
   	broadcast_to_recipient(recipient, message)
     

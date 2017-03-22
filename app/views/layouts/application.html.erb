@@ -3,14 +3,25 @@
   <head>
     <title>Chat</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application',  'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body> 
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class ="navbar-header" style="width:100%;">
+            <a class="navbar-brand" href="/" style="font-size: 32px;"> CM_Folks </a> 
+             <% if user_signed_in? %>
 
-  <body>
-  <div class="container">
+              <span style="color:white;font-size:33px;"> (<%= current_user.username%>) </span>
+
+              <%= link_to "LOGOUT", destroy_user_session_path, class: "btn btn-inverse btn-md pull-right ", style: "margin-top:5px; font-size: 20px; color:white; overflow:hidden; " ,:action => :destroy , :method => :delete %>
+             <% end %>
+         </div>
+        </div>  
+      </div>  
     <%= yield %>
     </div>
   </body>
-</html>
+  </html>

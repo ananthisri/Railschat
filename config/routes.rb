@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  mount RailsAdmin::Engine => '/admin' ,  as: 'rails-admin'
   resources :conversations, only: [:create] do
   	member do
   		post :close

@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
+ 
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -22,7 +24,7 @@
  }
 
  .messages-list {
- 	max-height: 200px;
+ 	max-height: 350px;
  	overflow-y: auto;
  	overflow-x: hidden;
  }
@@ -31,6 +33,7 @@
  	position: relative;
  	background-color: #D9EDF7;
  	border-color: #BCE8F1;
+ 	border-radius: 55px 55px 0px 55px;
  	margin: 5px 20px;
  	padding: 10px;
  	float: right;
@@ -39,7 +42,37 @@
  .message-received {
  	background-color: #F1F0F0;
  	border-color: #EEEEEE;
+ 	border-radius: 55px 55px 55px 0px;
  	margin: 5px 20px;
  	padding: 10px;
  	float: left;
  }
+
+ .field{
+ 	font-size:22px;
+	padding:10px;
+	margin-left:435px;
+ }
+
+ .login:hover{
+ color:orange;
+ }
+
+ .panel-default > .panel-heading-custom 
+ {
+ color: white;
+ background: #212121;
+ font-size:22px;
+ }
+ .panel-default > .panel-body
+ {
+ color: #212121;
+ }
+
+.myrow{
+	padding-left:20%;
+	padding-right:20%;
+}
+.acenter{
+	padding-left:28px;
+}

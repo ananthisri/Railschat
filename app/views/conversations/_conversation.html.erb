@@ -1,21 +1,41 @@
-<li>
+
+<div id="dialog-confirm" title="<%= conversation.opposed_user(user).username%> want to chat with you ! !">
+</div>
+
+<li class="convers_del">
+
+	
+
 	<div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
-		<div class="panel-heading">
-			<%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
-			<%= link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %>
+
+		<div class="panel-heading panel-heading-custom">
+			<div class="panel-title">
+			<%= link_to conversation.opposed_user(user).username, '', class: 'toggle-window' %>
+			<%= link_to "x", close_conversation_path(conversation), class: "btn btn-inverse btn-xs pull-right", style: "color:white;font-size:28px;margin-top:-14px" , remote: true, method: :post %>
+			</div>
 		</div>
-		<div class="panel-body" style="display: none;">
+
+		<div class="panel-body" >
+
 			<div class="messages-list">
-				<ul>
-				 <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+				<strong> 
+				<ul id="parent">
+				<%=render 'conversations/conversation_content', messages: conversation.messages, user: user %>
 				 </ul>
+				 </strong>
 			</div>
 			<form class="new_message">
 				<input name="conversation_id" type="hidden" value="<%= conversation.id %>">
 				<input name="user_id" type="hidden" value="<%= user.id %>">
+				<br/>
 				<textarea name="body" class="form-control"></textarea>
+				<br/>
 				<input type="submit" class="btn btn-success" value="Send">
 			</form>
 		</div>
+
+
+
+
 	</div>
-</li>
+</li>	
